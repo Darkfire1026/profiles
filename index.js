@@ -52,7 +52,7 @@ function generateHTML(info) {
   <div class="jumbotron jumbotron-fluid">
   <div class="container"style="background-color:silver;">
     <h1 class="display-4"> hello. i am ${info.name}</h1>
-    <p class="lead" style="background-color:silver;"> i am originally from  ${info.location}.</p>  <h3><span class="badge badge-secondary">my contacts </span></h3> <ul class="list-group">
+    <p class="lead" style="background-color:silver;"> i am originally from  ${info.location}.</p>  <h3><span class="badge badge-secondary">personal profile </span></h3> <ul class="list-group">
       <li class="list-group-item">My GitHub username is <a href="https://github.com/${info.github}">${info.github}</li>
       <li class="list-group-item">LinkedIn: <a href="${info.linkedin}"> ${info.linkedin} </li>
     <li class="list-group-item"> i have a rating of <img src="${info.rating}.png" width="250px"  height="48px"></img></ul>
@@ -69,14 +69,14 @@ async function init() {
 
         const html = generateHTML(info);
 
-        await writeFileAsync("index.html", html);
-        var readHtml = fs.readFileSync('index.html', 'utf8');
+        await writeFileAsync("index.html",html);
+        var readHtml = fs.readFileSync('index.html','utf8');
         var options = { format: 'Letter' };
-        pdf.create(readHtml, options).toFile('html.pdf', function(err, res) {
+        pdf.create(readHtml, options).toFile('html.pdf',function(err, res) {
             if (err) return console.log(err);
             console.log(res);
         });
-        console.log("Successfully wrote to index.html");
+        console.log("Successfully and painfully wrote to index.html");
     } catch (err) {
         console.log(err);
     }
